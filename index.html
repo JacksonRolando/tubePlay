@@ -1,0 +1,30 @@
+<html>
+<script>
+function getId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
+}
+    
+function getSrc(url) {
+    let videoId = getId(url);
+    return "http://www.youtube.com/embed/" + videoId
+}
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<input type='text' id='linkInput'></input>
+<button onclick="document.getElementById('player').src = getSrc(document.getElementById('linkInput').value)" >Enter</button>
+
+<br>
+<br>
+
+<iframe id='player' width="560" height="315" src="https://www.youtube.com/embed/dZlQLZirG2c?si=2sBUL2vnNrD55cGp&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</html>
